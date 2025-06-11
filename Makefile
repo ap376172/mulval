@@ -1,14 +1,17 @@
 MULVALROOT ?= $(CURDIR)
 export MULVALROOT
 
+
 default: all
 
 BIN_DIRS := bin bin/adapter bin/metrics
+
 
 $(BIN_DIRS):
 	mkdir -p $@
 
 all: $(BIN_DIRS) adapter attack_graph metrics
+
 
 adapter: bin/adapter
 	$(MAKE) -C src/adapter
