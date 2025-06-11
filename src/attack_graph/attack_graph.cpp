@@ -263,13 +263,13 @@ Predicate* predicateContainer::add_predicate(char *s, int a, Type t)
 {
    Predicate *p ;
    predicateMap::iterator i;
-   char arity[10] ; 
+  char arity[12];
    if ( a > 100000000) {
         cerr << "ERROR: arity overflow\n";
         exit(1);
    }
    #ifdef LINUX
-   snprintf(arity,9,  "%d",a); 
+  snprintf(arity, sizeof(arity), "%d", a);
    #else
    sprintf(arity,"%d",a); 
    #endif
