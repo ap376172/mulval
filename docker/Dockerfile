@@ -1,20 +1,19 @@
-FROM ubuntu:15.04
-MAINTAINER Christian Romano <christian.romano@risksense.com>
+FROM ubuntu:22.04
+
+LABEL maintainer="Christian Romano <christian.romano@risksense.com>"
 
 # Set MySQL credentials
 RUN echo mysql-server mysql-server/root_password password root | debconf-set-selections && \
   echo mysql-server mysql-server/root_password_again password root | debconf-set-selections
 
 # Install managed dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   autoconf \
-  bison \
-  flex \
+  build-essential \
   g++ \
   graphviz \
   libpcre3 \
   libpcre3-dev \
-  libcurl3 \
   libcurl4-openssl-dev \
   make \
   mysql-server \

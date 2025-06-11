@@ -1,17 +1,27 @@
+MULVALROOT ?= $(CURDIR)
+export MULVALROOT
+
 default: all
 
-all: adapter attack_graph metrics
+BIN_DIRS := bin bin/adapter bin/metrics
 
-adapter:
-	(cd src/adapter; make; make install)
+$(BIN_DIRS):
+	mkdir -p $@
 
-attack_graph:
-	(cd src/attack_graph; make install)
+all: $(BIN_DIRS) adapter attack_graph metrics
 
-metrics:
-	(cd src/metrics; make; make install)
+adapter: bin/adapter
+	$(MAKE) -C src/adapter
+	$(MAKE) -C src/adapter install
+
+attack_graph: bin
+	$(MAKE) -C src/attack_graph install
+
+metrics: bin/metrics
+	$(MAKE) -C src/metrics
+	$(MAKE) -C src/metrics install
 
 clean:
-	(cd src/attack_graph; make clean)
-	(cd src/adapter; make clean)
-	(cd src/metrics; make clean)
+	$(MAKE) -C src/attack_graph clean
+	$(MAKE) -C src/adapter clean
+	$(MAKE) -C src/metrics clean
