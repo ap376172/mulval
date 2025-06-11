@@ -8,7 +8,7 @@ Make sure both the program "xsb" and "dot" reside in your PATH.
 
 
 ####Setup
-The environmental variable MULVALROOT should point to this package's root folder. Include $MULVALROOT/bin and $MULVALROOT/utils in PATH. Type "make" to compile everything
+The environmental variable MULVALROOT should point to this package's root folder. Include $MULVALROOT/bin and $MULVALROOT/utils in PATH. Type "make" to compile everything. Building from source requires a C++11 compiler along with **flex** and **bison** for generating the attack graph parser.
 
 You can either run the MulVAL attack-graph generator directly, if you already have an
 input file; or you can run the appropriate adapters to create the input files and then 
