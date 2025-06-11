@@ -1,9 +1,11 @@
 MULVALROOT ?= $(CURDIR)
 export MULVALROOT
 
+
+
 default: all
 
-BIN_DIRS := bin bin/adapter bin/metrics
+BIN_DIRS = bin bin/adapter bin/metrics
 
 $(BIN_DIRS):
 	mkdir -p $@
@@ -20,6 +22,7 @@ attack_graph: bin
 metrics: bin/metrics
 	$(MAKE) -C src/metrics
 	$(MAKE) -C src/metrics install
+
 
 clean:
 	$(MAKE) -C src/attack_graph clean
