@@ -6,9 +6,31 @@ You will also need to check whether GraphViz is already installed on your system
 "dot". If GraphViz is not installed, you need to install it at http://www.graphviz.org/
 Make sure both the program "xsb" and "dot" reside in your PATH.
 
+#### Installing dependencies
+MulVAL requires the XSB logic engine, GraphViz and a Java JDK. A C++11
+compiler and `make` are also needed. On Debian/Ubuntu systems you can
+install most prerequisites with:
 
-####Setup
+```bash
+sudo apt-get install build-essential openjdk-8-jdk graphviz
+```
+
+Download and build XSB from <http://xsb.sourceforge.net/> and ensure the
+`xsb` executable is available in your `PATH`.
+
+#### Setup
 The environmental variable MULVALROOT should point to this package's root folder. Include $MULVALROOT/bin and $MULVALROOT/utils in PATH. Type "make" to compile everything. Building from source requires a C++11 compiler. A prebuilt parser is included so **flex** and **bison** are no longer required.
+
+Run `make` from the repository root to compile all components.
+
+#### Quick test
+After building, verify the tools by generating a sample attack graph:
+
+```bash
+export MULVALROOT=$(pwd)
+export PATH=$PATH:$MULVALROOT/bin:$MULVALROOT/utils
+utils/graph_gen.sh testcases/3host/input.P -v
+```
 
 You can either run the MulVAL attack-graph generator directly, if you already have an
 input file; or you can run the appropriate adapters to create the input files and then 
