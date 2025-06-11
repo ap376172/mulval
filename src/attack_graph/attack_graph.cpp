@@ -1194,7 +1194,7 @@ int build_graph(void)
        andNode->nodeNum = graph_data::nodeCount;
          andNode->parentNodeNum = orNode->nodeNum;
       orNode->outGoing.add(*(new Arc(orNode, andNode)));
-      for( Fact *fa= c->factList.gethead(); fa >0; fa = c->factList.getnext()) {
+      for( Fact *fa= c->factList.gethead(); fa != NULL; fa = c->factList.getnext()) {
            fact_key = fa->key; 
            Node *newNode;
            Type factType = fa->predicate->type; 
